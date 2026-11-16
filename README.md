@@ -1,5 +1,5 @@
 # Registros de Pacientes como Base para Decisão Clínica
-Este projeto é baseado no Primeiro Relatório Anual de Efetividade e Segurança para Trikafta.
+Este projeto é baseado no [Primeiro Relatório Anual de Efetividade e Segurança para Trikafta emitido pelo GBEFC](https://www.portalgbefc.org.br/ckfinder/userfiles/files/Relato%CC%81rio_Monitoramento_Uso%20de%20Moduladores%20da%20proteina%20CFTR.pdf).
 
 ### Estatística aplicada a um registro longitudinal pediátrico: IMC, função pulmonar e internações aos 6 anos vs 1 ano depois
 

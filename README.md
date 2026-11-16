@@ -1,4 +1,5 @@
 # Registros de Pacientes como Base para Decisão Clínica
+Este projeto é baseado no Primeiro Relatório Anual de Efetividade e Segurança para Trikafta.
 
 ### Estatística aplicada a um registro longitudinal pediátrico: IMC, função pulmonar e internações aos 6 anos vs 1 ano depois
 
@@ -25,18 +26,15 @@ O projeto responde a quatro perguntas práticas:
 
 | Pergunta | Técnica |
 |---|---|
-| O que ajuda a prever a função pulmonar do paciente? | Regressão linear (MAE, RMSE, R²) |
-| É possível prever quem será internado? | Regressão logística (matriz de confusão, precisão, recall, F1) |
+| É possível prever a função pulmonar do paciente? | Regressão linear (MAE, RMSE, R²) |
+| É possível avaliar continuidade de internações? | Regressão logística (matriz de confusão, precisão, recall, F1) |
 | O tratamento teve efeitos positivos 1 ano depois? | Comparação pareada contra critérios de sucesso definidos antes da análise |
-| Quem merece atenção agora? | Lista de triagem baseada em regras transparentes |
 
 **Critérios de sucesso do tratamento**
 
 1. **IMC** melhora ou se estabiliza (variação ≥ −0,5 kg/m²; mediana da coorte)
 2. **Internações** diminuem (taxa aos 7 anos menor que aos 6)
 3. **Função pulmonar** melhora (VEF1 em escore Z aumenta; mediana da coorte)
-
-> **Importante:** este projeto é baseado no Primeiro Relatório Anual de Efetividade e Segurança para Trikafta
 
 ---
 
@@ -193,7 +191,7 @@ Em 20 repetições: F1 = 0,37 ± 0,04 e AUC = 0,56 ± 0,03. Todos os IC 95% das 
 ```
 .
 ├── Analise_Registro_Pacientes.ipynb   # notebook completo, com saídas
-├── dados_fin.csv                      # base de registros (pseudonimizada)
+├── dados_fin.csv                      # base de registros (anonimizada)
 ├── requirements.txt
 ├── README.md
 └── figures/                           # gráficos gerados pelo notebook

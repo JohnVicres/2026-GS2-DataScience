@@ -163,18 +163,7 @@ Em 20 repetições: F1 = 0,37 ± 0,04 e AUC = 0,56 ± 0,03. Todos os IC 95% das 
 
 ![Scorecard](figures/09_scorecard.png)
 
-5 pacientes atendem aos 3 critérios e 5 atendem a 2. O veredito da coorte esconde **quem precisa de revisão**.
-
-### 4. Robustez: o resultado depende das escolhas?
-
-| Cenário | Pares | Δ IMC (mediana) | Δ VEF1 Z (mediana) | Internação | Critérios |
-|---|---|---|---|---|---|
-| Idade em 31/dez (usado) | 10 | +0,30 | +0,30 | 20% → 20% | 2/3 |
-| Idade em 30/jun | 10 | +1,09 | +0,15 | 20% → 10% | 3/3 |
-| Idade em 1º/jan | 7 | +1,17 | −0,01 | 29% → 0% | 2/3 |
-| Coorte ampliada (todos os pares consecutivos) | 42 | +0,64 | +0,05 | 29% → 12% | 3/3 |
-
-O número de critérios atendidos **muda com a data de referência e a seleção**: 10 pares não sustentam uma conclusão firme. Na coorte ampliada, o IMC sobe de forma significativa (p < 0,001).
+5 pacientes atendem aos 3 critérios e 5 atendem a 2. A repetição dos resultados em internação sinalizam possíveis fatores externos.
 
 ## Como um registro de pacientes apoia decisões
 

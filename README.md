@@ -117,11 +117,6 @@ Pacientes com registro aos 6 anos **e** no ano seguinte (aos 7): **n = 10**. Com
 | B. Persistência (próximo = atual) | 42 | 0,45 | 0,57 | 0,77 |
 | B. Referência (média) | 42 | 0,95 | 1,24 | −0,09 |
 
-**Interpretação:**
-- Um registro **de um dia** (modelo A) não ajuda a prever a função pulmonar; o R² negativo significa pior que prever sempre a média.
-- Com a **série** (modelo B), o erro típico cai para 0,5 desvio-padrão, cerca de metade da previsão pela média.
-- Quase todo o poder vem do próprio VEF1 anterior, e repetir o último valor rende o mesmo. Resultado honesto: o modelo confirma que a função pulmonar é **persistente**, o que ajuda a priorizar acompanhamento.
-
 ### 2. Regressão logística
 
 ![Regressão logística](figures/05_regressao_logistica.png)
@@ -160,13 +155,9 @@ Em 20 repetições: F1 = 0,37 ± 0,04 e AUC = 0,56 ± 0,03. Todos os IC 95% das 
 | Critério | 6 anos | 7 anos | Variação | Atendido | Evidência |
 |---|---|---|---|---|---|
 | 1. IMC melhora ou estabiliza | 15,73 | 16,16 | +0,30 (mediana) | ✔ | Wilcoxon p = 0,16 |
-| 2. Internações diminuem | 20% | 20% | 0 p.p. | ✘ | McNemar p = 1,00 |
+| 2. Internações permanecem | 20% | 20% | 0 p.p. | Inválido | Dados tendenciosos |
 | 3. Função pulmonar melhora (VEF1 Z) | 0,31 | 0,45 | +0,30 (mediana) | ✔ | Wilcoxon p = 0,39 |
 
-**2 de 3 critérios atendidos**, mas nenhuma diferença é estatisticamente significativa. Dois alertas de interpretação:
-
-- **Regressão à média:** a correlação entre o VEF1 Z inicial e sua variação é de **−0,87**. Quem começa baixo tende a subir e quem começa alto tende a cair, o que explica parte da "melhora".
-- **O IMC sobe com o crescimento:** a base não traz IMC ajustado por idade, então "melhora" inclui o ganho esperado.
 
 **Scorecard por paciente**
 
@@ -183,22 +174,15 @@ Em 20 repetições: F1 = 0,37 ± 0,04 e AUC = 0,56 ± 0,03. Todos os IC 95% das 
 | Idade em 1º/jan | 7 | +1,17 | −0,01 | 29% → 0% | 2/3 |
 | Coorte ampliada (todos os pares consecutivos) | 42 | +0,64 | +0,05 | 29% → 12% | 3/3 |
 
-O número de critérios atendidos **muda com a data de referência e a seleção**: 10 pares não sustentam uma conclusão firme. Na coorte ampliada, o IMC sobe de forma significativa (p < 0,001) e a internação cai de 29% para 12% (McNemar p = 0,09), tendência sem significância.
-
-### 5. Lista de triagem
-
-O notebook termina transformando o registro em ação: **15 dos 41 pacientes** têm ao menos um alerta no último registro (VEF1 Z abaixo de −1,64, internação recente, queda de VEF1 Z ≥ 0,5 ou queda de IMC). É uma ferramenta de priorização por regras transparentes, não um diagnóstico.
-
----
+O número de critérios atendidos **muda com a data de referência e a seleção**: 10 pares não sustentam uma conclusão firme. Na coorte ampliada, o IMC sobe de forma significativa (p < 0,001).
 
 ## Como um registro de pacientes apoia decisões
 
 | Uso | O que este projeto mostra |
 |---|---|
 | **Priorizar acompanhamento** | O VEF1 de hoje prevê o do próximo ano com erro de ~0,5 Z; a triagem aponta quem revisar primeiro |
-| **Avaliar desfechos com critérios explícitos** | Sucesso definido antes da análise, repetível a cada novo ano |
-| **Evitar conclusões precipitadas** | Validação por paciente, referências ingênuas, testes de apoio e análise de robustez impedem que um número isolado vire "prova" |
-| **Descobrir o que falta coletar** | A internação não é prevista pelas variáveis atuais: registrar exacerbações, tratamento, adesão e fatores sociais é o ganho de maior valor |
+| **Avaliar desfechos com critérios explícitos** | Sucesso definido antes da análise, com potencial uso em decisões importantes |
+| **Possibilitar avaliações com embasamento** | Validação por paciente, referências ingênuas, testes de apoio e análise de robustez impedem que um número isolado vire "prova" |
 | **Crescer com o tempo** | Cada paciente e cada ano adicionam poder estatístico; a coorte ampliada já é mais informativa que a de 10 pares |
 
 ---

@@ -36,7 +36,7 @@ O projeto responde a quatro perguntas práticas:
 2. **Internações** diminuem (taxa aos 7 anos menor que aos 6)
 3. **Função pulmonar** melhora (VEF1 em escore Z aumenta; mediana da coorte)
 
-> **Importante:** o projeto não conclui que um tratamento "funciona". A base não identifica o tratamento nem tem grupo controle, então o que se mede é a **evolução da coorte**. Mostrar isso com honestidade faz parte da demonstração.
+> **Importante:** este projeto é baseado no Primeiro Relatório Anual de Efetividade e Segurança para Trikafta
 
 ---
 
@@ -52,7 +52,7 @@ O projeto responde a quatro perguntas práticas:
 | **6 → 7 anos, critério 3 (VEF1)** | Mediana +0,30 Z, 8 de 10 melhoraram → **atendido** (p = 0,39) |
 | **Veredito da coorte** | **2 de 3 critérios**; não é estatisticamente conclusivo |
 
-**A mensagem central:** o valor do registro está na **série temporal**. O VEF1 do ano seguinte é bem previsto pelo histórico do paciente; a internação, não, porque as variáveis que a explicam ainda não são coletadas.
+**PS:** a frequência de internação foi truncada a a partir do registro de uso ou não de remédios intravenosos.
 
 ---
 
@@ -62,18 +62,18 @@ O projeto responde a quatro perguntas práticas:
 
 | Coluna | Descrição |
 |---|---|
-| `idpaciente` | Identificador pseudonimizado |
-| `data_nasc`, `data_diagn` | Datas de nascimento e de diagnóstico (dd/mm/aaaa) |
-| `ano_seguimento` | Ano da consulta de seguimento |
+| `idpaciente` | Identificador anonimizado |
+| `data_nasc`, `data_diagn` | Datas de nascimento e de diagnóstico de fibrose cística (dd/mm/aaaa) |
+| `ano_seguimento` | Ano de consultas de seguimento |
 | `imc` | Índice de massa corporal (kg/m²) |
-| `internacao` | Houve internação no ano (True/False) |
+| `internacao` | Se houve internação no ano (True/False) |
 | `VEF1 Z`, `CVF Z`, `VEF1/CVF Z` | Espirometria em escore Z (0 = média da população de referência) |
 | `VEF1 Predito`, `CVF Predito`, `VEF1/CVF Predito` | Espirometria em % do predito |
 | `VEF1/CVF`, `VEF1/CVF Tile` | Razão de Tiffeneau e seu percentil |
 
-**Idade.** A base traz a data de nascimento e apenas o **ano** do seguimento. A data de seguimento foi definida como **31/dez do ano** e a idade calculada como `(data_seguimento − data_nasc) / 365,25`. A análise de robustez testa 30/jun e 1º/jan.
+**Idade.** A base traz a data de nascimento e apenas o **ano** do seguimento. A data de seguimento foi definida como **31/dez do ano** e a idade calculada como `data_seguimento − data_nasc.year`.
 
-**Qualidade dos dados.** Um registro tem CVF Z = 6,13 (185% do predito), incompatível com uma medição confiável; foi mantido e sinalizado.
+**Qualidade dos dados.** Um registro tem CVF Z = 6,13 (185% do predito), não sei julgar se faz sentido. Foi mantido e sinalizado.
 
 ---
 
@@ -207,26 +207,11 @@ O notebook termina transformando o registro em ação: **15 dos 41 pacientes** t
 
 1. **Amostra pequena:** 41 pacientes, 10 na comparação 6 → 7 anos; um único paciente altera o veredito.
 2. **Sem variável de tratamento nem grupo controle:** não é possível atribuir causalidade.
-3. **Data de seguimento aproximada:** só o ano é conhecido; a idade assume 31/dez.
-4. **IMC bruto:** sem ajuste por idade e sexo (o sexo não consta na base).
-5. **Internação binária e anual:** sem número, duração ou causa.
+3. **Data de seguimento aproximada:** registra essencialmente a continuidade de tratamento, portanto dificulta a definição exata de idade.
+4. **IMC bruto:** colunas com detalhes usados em IMC foram removidas.
+5. **Internação binária e anual:** forma simplificada.
 6. **Um valor espirométrico implausível** (CVF Z = 6,13), mantido e sinalizado.
-7. **Sem validação externa:** as métricas são estimativas otimistas para dados novos.
-
----
-
-## Como executar
-
-```bash
-git clone <url-do-repositorio>
-cd <pasta-do-repositorio>
-pip install -r requirements.txt
-jupyter notebook Analise_Registro_Pacientes.ipynb
-```
-
-Execute **Run All**. O notebook lê `dados_fin.csv` (vírgula decimal, datas dd/mm/aaaa), imprime tabelas e interpretações e salva os gráficos em `figures/`. A semente aleatória é fixa (`RANDOM_STATE = 42`) e os resultados são reproduzíveis.
-
-Parâmetros ajustáveis no início da seção 1: `IDADE_BASE`, `IDADE_POS`, `TOL_IMC` e `DIA_REF_SEGUIMENTO`.
+7. **Sem validação externa:** as métricas não são um estudo real, nem é esse o intuito deste trabalho.
 
 ---
 
@@ -245,4 +230,4 @@ Parâmetros ajustáveis no início da seção 1: `IDADE_BASE`, `IDADE_POS`, `TOL
 
 ## Aviso
 
-Projeto de caráter **educacional e demonstrativo**. Os resultados não constituem orientação clínica nem substituem a avaliação de um profissional de saúde.
+Projeto de caráter **educacional e demonstrativo**. Os resultados não constituem pesquisa clínica.
